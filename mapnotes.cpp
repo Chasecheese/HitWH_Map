@@ -20,7 +20,7 @@ void MapNotes::paintEvent(QPaintEvent *){
     QPen pen;
     pen.setWidth(3);
 
-    QColor squreColor = colorTable[3];//绘制bubble
+    QColor squreColor = colorTable[4];//绘制bubble
     pen.setColor(squreColor.dark());
 
     painter.setPen(pen);
