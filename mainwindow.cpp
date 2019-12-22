@@ -1,0 +1,24 @@
+﻿#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    mapboard = new MapBoard;
+    ui->MapArea->setWidget(mapboard);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::on_Route_clicked()
+{
+
+    mapboard->updateBoard();
+    mapboard->mapnotes->setWindowFlag(Qt::WindowStaysOnBottomHint);
+    ui->order->setNum(mapboard->mapnotes->location[mapboard->mapnotes->location[0]]);
+}
