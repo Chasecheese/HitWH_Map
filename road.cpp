@@ -8,8 +8,8 @@ Road::Road(int i)
         this->endPointA = 1;
         this->endPointB = 2;
         this->pointNumber = 2;
-        this->pointList.push_back(QPoint(490,160));
-        this->pointList.push_back(QPoint(360,340));
+        this->pointList.push_back(QPoint(200,300));
+        this->pointList.push_back(QPoint(300,400));
     }
     else if(i==2) {
         this->length=100;
@@ -17,8 +17,8 @@ Road::Road(int i)
         this->endPointA = 2;
         this->endPointB = 3;
         this->pointNumber = 2;
-        this->pointList.push_back(QPoint(360,340));
-        this->pointList.push_back(QPoint(230,230));
+        this->pointList.push_back(QPoint(300,400));
+        this->pointList.push_back(QPoint(200,500));
     }
     else {
         this->length=100;
@@ -26,8 +26,8 @@ Road::Road(int i)
         this->endPointA = 3;
         this->endPointB = 1;
         this->pointNumber = 2;
-        this->pointList.push_back(QPoint(230,230));
-        this->pointList.push_back(QPoint(490,160));
+        this->pointList.push_back(QPoint(200,500));
+        this->pointList.push_back(QPoint(200,300));
     }
 
 }
