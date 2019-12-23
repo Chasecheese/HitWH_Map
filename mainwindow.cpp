@@ -19,6 +19,5 @@ void MainWindow::on_Route_clicked()
 {
 
     mapboard->updateBoard();
-    mapboard->mapnotes->setWindowFlag(Qt::WindowStaysOnBottomHint);
     ui->order->setNum(mapboard->mapnotes->location[mapboard->mapnotes->location[0]]);
 }

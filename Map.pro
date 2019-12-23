@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         mapboard.cpp \
-        mapnotes.cpp
+        mapnotes.cpp \
+        route.cpp
 
 HEADERS += \
         mainwindow.h \
         mapboard.h \
-        mapnotes.h
+        mapnotes.h \
+        route.h
 
 FORMS += \
         mainwindow.ui \

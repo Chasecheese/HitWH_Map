@@ -7,11 +7,18 @@ MapNotes::MapNotes(QWidget *parent) :
 {
     ui->setupUi(this);
     location[0] = 0;
+    roadCo[0] = 0;
+}
+
+
+void MapNotes::updateMapNotes(){
+    repaint();
 }
 
 void MapNotes::paintEvent(QPaintEvent *){
     QPainter painter(this);
     // 设置画笔颜色
+    roadCo[0] = route.getRoute(location[0]);
 
     static const QRgb colorTable[8] = {
         0x000000,0xFFA500, 0xCC6666, 0x66CC66, 0x00BFFF,
@@ -20,7 +27,7 @@ void MapNotes::paintEvent(QPaintEvent *){
     QPen pen;
     pen.setWidth(3);
 
-    QColor squreColor = colorTable[1];//绘制bubble
+    QColor squreColor = colorTable[location[0]+1];//绘制bubble
     pen.setColor(squreColor.dark());
 
     painter.setPen(pen);

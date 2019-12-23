@@ -2,9 +2,10 @@
 #define MAPNOTES_H
 
 #include <QWidget>
-#include <QFrame>
 #include <QPaintEvent>
 #include <QPainter>
+#include <route.h>
+
 namespace Ui {
 class MapNotes;
 }
@@ -18,6 +19,7 @@ public:
     void updateMapNotes();
     void paintEvent(QPaintEvent *);
     int location[10];
+    int roadCo[10];
     ~MapNotes();
 
 private slots:
@@ -29,6 +31,7 @@ private slots:
 
 private:
     Ui::MapNotes *ui;
+    Route route;
 };
 
 #endif // MAPNOTES_H

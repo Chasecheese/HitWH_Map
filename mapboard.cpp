@@ -11,7 +11,7 @@ MapBoard::MapBoard(QWidget *parent) :
 }
 
 void MapBoard::updateBoard(){
-
+    mapnotes->updateMapNotes();
 }
 
 MapBoard::~MapBoard()
