@@ -4,6 +4,10 @@ Route::Route()
 {
 
 }
-int Route::getRoute(int location){
-    return location+1;
+vector<Road> Route::getRoute(){
+
+    vector<Road> temp;
+    temp.push_back(Road(1));
+    temp.push_back(Road(2));
+    return temp;
 }

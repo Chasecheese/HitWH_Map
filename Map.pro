@@ -25,16 +25,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        calculate.cpp \
         main.cpp \
         mainwindow.cpp \
         mapboard.cpp \
         mapnotes.cpp \
+        road.cpp \
         route.cpp
 
 HEADERS += \
+        calculate.h \
         mainwindow.h \
         mapboard.h \
         mapnotes.h \
+        road.h \
         route.h
 
 FORMS += \

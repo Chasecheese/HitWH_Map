@@ -19,5 +19,5 @@ void MainWindow::on_Route_clicked()
 {
 
     mapboard->updateBoard();
-    ui->order->setNum(mapboard->mapnotes->location[mapboard->mapnotes->location[0]]);
+//    ui->order->setNum(mapboard->mapnotes->location[mapboard->mapnotes->location[0]]);
 }

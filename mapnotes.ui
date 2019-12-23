@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="BulidH">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>180</y>
+     <x>360</x>
+     <y>340</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="BulidY">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>230</y>
+     <x>490</x>
+     <y>160</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="BuildT">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>280</y>
+     <x>230</x>
+     <y>230</y>
      <width>93</width>
      <height>28</height>
     </rect>

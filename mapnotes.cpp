@@ -6,34 +6,37 @@ MapNotes::MapNotes(QWidget *parent) :
     ui(new Ui::MapNotes)
 {
     ui->setupUi(this);
-    location[0] = 0;
-    roadCo[0] = 0;
 }
 
-
 void MapNotes::updateMapNotes(){
-    repaint();
+
+    re = route.getRoute();
+    update();
 }
 
 void MapNotes::paintEvent(QPaintEvent *){
     QPainter painter(this);
     // 设置画笔颜色
-    roadCo[0] = route.getRoute(location[0]);
-
     static const QRgb colorTable[8] = {
         0x000000,0xFFA500, 0xCC6666, 0x66CC66, 0x00BFFF,
                0xBDB76B, 0xCC66CC,0x000000
     };//调色板
     QPen pen;
     pen.setWidth(3);
-
-    QColor squreColor = colorTable[location[0]+1];//绘制bubble
-    pen.setColor(squreColor.dark());
-
+    QColor squreColor = colorTable[3];//绘制bubble
+    pen.setColor(squreColor.light());
     painter.setPen(pen);
     painter.setBrush(squreColor);
+    QPoint* C;
 
-    painter.drawRect(100,  100, 100, 30);
+    for(unsigned long long i=0;i<re.size();i++){
+        C = new QPoint[re.at(i).pointNumber];
+        for(unsigned long long j=0;j<re.at(i).pointNumber;j++){
+            C[j] = re.at(i).pointList.at(j);
+        }
+        painter.drawPolyline(C,static_cast<int>(re.at(i).pointNumber));
+    }
+
 }
 
 MapNotes::~MapNotes()
@@ -43,18 +46,15 @@ MapNotes::~MapNotes()
 
 void MapNotes::on_BulidH_clicked()
 {
-    location[0]++;
-    location[location[0]] = 1;
+    location.push_back(1);
 }
 
 void MapNotes::on_BulidY_clicked()
 {
-    location[0]++;
-    location[location[0]] = 2;
+    location.push_back(2);
 }
 
 void MapNotes::on_BuildT_clicked()
 {
-    location[0]++;
-    location[location[0]] = 3;
+    location.push_back(3);
 }

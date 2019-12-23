@@ -5,6 +5,9 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <route.h>
+#include <vector>
+
+using namespace std;
 
 namespace Ui {
 class MapNotes;
@@ -18,8 +21,8 @@ public:
     explicit MapNotes(QWidget *parent = nullptr);
     void updateMapNotes();
     void paintEvent(QPaintEvent *);
-    int location[10];
-    int roadCo[10];
+    vector<int> location;
+    vector<Road> re;
     ~MapNotes();
 
 private slots:
