@@ -4,10 +4,11 @@ Route::Route()
 {
 
 }
-vector<Road> Route::getRoute(){
 
+vector<Road> Route::getRoute(vector<int> location){
     vector<Road> temp;
-    temp.push_back(Road(1));
-    temp.push_back(Road(2));
+    temp = calculate.getRoadList(location);
     return temp;
 }
+
+

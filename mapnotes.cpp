@@ -10,7 +10,7 @@ MapNotes::MapNotes(QWidget *parent) :
 
 void MapNotes::updateMapNotes(){
 
-    re = route.getRoute();
+    re = route.getRoute(location);
     update();
 }
 
@@ -20,15 +20,18 @@ void MapNotes::paintEvent(QPaintEvent *){
     static const QRgb colorTable[8] = {
         0x000000,0xFFA500, 0xCC6666, 0x66CC66, 0x00BFFF,
                0xBDB76B, 0xCC66CC,0x000000
-    };//调色板
+    };
+    //调色板
     QPen pen;
     pen.setWidth(3);
     QColor squreColor = colorTable[3];//绘制bubble
     pen.setColor(squreColor.light());
     painter.setPen(pen);
     painter.setBrush(squreColor);
-    QPoint* C;
 
+
+    //按照坐标绘制路线
+    QPoint* C;
     for(unsigned long long i=0;i<re.size();i++){
         C = new QPoint[re.at(i).pointNumber];
         for(unsigned long long j=0;j<re.at(i).pointNumber;j++){
@@ -36,7 +39,6 @@ void MapNotes::paintEvent(QPaintEvent *){
         }
         painter.drawPolyline(C,static_cast<int>(re.at(i).pointNumber));
     }
-
 }
 
 MapNotes::~MapNotes()

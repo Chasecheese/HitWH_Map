@@ -12,7 +12,7 @@ class Route
 public:
     Calculate calculate;
     Route();
-    vector<Road> getRoute();
+    vector<Road> getRoute(vector<int>);
 };
 
 #endif // ROUTE_H
