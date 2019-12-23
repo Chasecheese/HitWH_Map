@@ -6,7 +6,7 @@
 #include <QPainter>
 #include <route.h>
 #include <vector>
-
+#include <QMouseEvent>
 using namespace std;
 
 namespace Ui {
@@ -21,6 +21,7 @@ public:
     explicit MapNotes(QWidget *parent = nullptr);
     void updateMapNotes();
     void paintEvent(QPaintEvent *);
+    void mousePressEvent(QMouseEvent *event);
     vector<int> location;
     vector<Road> re;
     ~MapNotes();

@@ -21,8 +21,7 @@ vector<Road> Calculate::getRoadList(vector<int> location){
 
 vector<int> Calculate::getRoadNum(vector<int> location){
     vector<int> temp;
-    temp.push_back(location.at(0));
-    temp.push_back(location.at(1));
-    temp.push_back(location.at(2));
+    for(int i=0;i<58;i++)
+    temp.push_back(i);
     return temp;
 }

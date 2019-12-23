@@ -10,8 +10,8 @@ public:
     Road(int i);
     int Nummber;            //路径编号
     float length;           //路径长度
-    vector<QPoint> pointList;      //拐点容器
-    unsigned long long pointNumber;        //点数量
+    vector<QPoint> pointList;     //拐点容器
+    unsigned long long pointNumber;      //点数量
     int endPointA,endPointB;//端点A，端点B
     string roadName;
 };

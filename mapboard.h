@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <mapnotes.h>
+
 namespace Ui {
 class MapBoard;
 }

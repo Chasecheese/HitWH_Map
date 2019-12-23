@@ -7,7 +7,12 @@ MapNotes::MapNotes(QWidget *parent) :
 {
     ui->setupUi(this);
 }
-
+void MapNotes::mousePressEvent(QMouseEvent *event){
+    QPoint p_re = event->pos();
+    QString str;
+    str = QString("%1 , %2").arg(p_re.x()).arg(p_re.y());
+    ui->label->setText(str);
+}
 void MapNotes::updateMapNotes(){
 
     re = route.getRoute(location);
@@ -48,15 +53,15 @@ MapNotes::~MapNotes()
 
 void MapNotes::on_BulidH_clicked()
 {
-    location.push_back(1);
+    location.push_back(0);
 }
 
 void MapNotes::on_BulidY_clicked()
 {
-    location.push_back(2);
+    location.push_back(1);
 }
 
 void MapNotes::on_BuildT_clicked()
 {
-    location.push_back(3);
+    location.push_back(2);
 }
