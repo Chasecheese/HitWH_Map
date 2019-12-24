@@ -9,6 +9,7 @@ class Road //任意两点之间的道路，一般包括多个拐点
 public:
     Road();
     Road(unsigned long long);
+    Road(int Nummber, float length, vector<QPoint> pointList, unsigned long long pointNumber,int endPointA,int endPointB);
 
     int Nummber;            //路径编号
     float length;           //路径长度

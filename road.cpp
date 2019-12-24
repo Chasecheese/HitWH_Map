@@ -3,7 +3,14 @@
 Road::Road(){
 
 }
-
+Road::Road(int Nummber, float length, vector<QPoint> pointList, unsigned long long pointNumber,int endPointA,int endPointB){
+    this->Nummber = Nummber;
+    this->length = length;
+    this->pointList = pointList;
+    this->pointNumber = pointNumber;
+    this->endPointA = endPointA;
+    this->endPointB = endPointB;
+}
 Road::Road(unsigned long long i)
 {
     if(i==0){
@@ -201,6 +208,9 @@ Road::Road(unsigned long long i)
     }else if(i==58){
         this->pointList.push_back(QPoint(235,222));
         this->pointList.push_back(QPoint(236,136));
+    }else if(i==59){
+        this->pointList.push_back(QPoint(0,0));
+        this->pointList.push_back(QPoint(0,0));
     }
 
 }
