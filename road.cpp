@@ -1,9 +1,13 @@
 ﻿#include "road.h"
 
-Road::Road(int i)
+Road::Road(){
+
+}
+
+Road::Road(unsigned long long i)
 {
     if(i==0){
-        this->length=50;
+        this->length=166;
         this->Nummber=0;
         this->endPointA = 0;
         this->endPointB = 1;
@@ -12,7 +16,7 @@ Road::Road(int i)
         this->pointList.push_back(QPoint(514,861));
     }
     else if(i==1) {
-        this->length=100;
+        this->length=315;
         this->Nummber=1;
         this->endPointA = 0;
         this->endPointB = 6;
@@ -21,7 +25,7 @@ Road::Road(int i)
         this->pointList.push_back(QPoint(462,667));
     }
     else if(i==2){
-        this->length=100;
+        this->length=388;
         this->Nummber=2;
         this->endPointA = 12;
         this->endPointB = 14;
@@ -29,6 +33,7 @@ Road::Road(int i)
         this->pointList.push_back(QPoint(514,861));
         this->pointList.push_back(QPoint(462,667));
     }else if(i==3){
+        this->length=460;
         this->pointList.push_back(QPoint(41,733));
         this->pointList.push_back(QPoint(278,659));
     }else if(i==4){
@@ -198,5 +203,8 @@ Road::Road(int i)
         this->pointList.push_back(QPoint(236,136));
     }
 
+}
 
+Road Road::getRoad(unsigned long long i){
+    return Road(i);
 }

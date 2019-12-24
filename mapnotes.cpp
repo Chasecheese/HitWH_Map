@@ -34,7 +34,6 @@ void MapNotes::paintEvent(QPaintEvent *){
     painter.setPen(pen);
     painter.setBrush(squreColor);
 
-
     //按照坐标绘制路线
     QPoint* C;
     for(unsigned long long i=0;i<re.size();i++){
