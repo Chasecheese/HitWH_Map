@@ -21,7 +21,7 @@ public:
     int Dist[28][28];
     vector<int> x[28][28];
     int Map[28][28];
-
+    vector<Road> roadCollection;
     void init();
 private:
 

@@ -5,6 +5,10 @@ Calculate::Calculate()
 
 }
 
+
+
+
+
 void Calculate::init(){
     ifstream in;
     in.open("D:\\data.txt");
@@ -12,10 +16,15 @@ void Calculate::init(){
         for(int j=0;j<28;j++){
             in>>Map[i][j];
             Dist[i][j]=Map[i][j];
+            //初始化路径队列
             if(Dist[i][j]!=-1&&Dist[i][j]!=0){
-                x[i][j].push_back()
+
             }
         }
+    }
+    in.open("D:\\Road.txt");
+    for(int i=0;i<59;i++){
+
     }
     in.close();
 }
@@ -56,7 +65,7 @@ vector<Road> Calculate::getRoadList(vector<int> location){
     vector<Road> temp;
 
     for(unsigned long long i=0;i<roadlist.size();i++){
-        temp.push_back(Road().getRoad(i));
+
     }
     init();
     return temp;
