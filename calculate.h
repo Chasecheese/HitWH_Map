@@ -17,6 +17,7 @@ public:
 
     void floyd();
     void updateRoute(int old,int newr1,int newr2);
+    vector<Road> serachRoad(int i,int j);
     Road serachRoadNum(int i,int j);
 
     int Dist[28][28];

@@ -29,7 +29,7 @@ void Calculate::init(){
     ifstream in;
     roadCollection.clear();
     in.open("D:\\roadData.txt");
-    for(int i=0;i<=58;i++){
+    for(int i=0;i<=59;i++){
         Road tempRoad;
         in>>tempRoad.Nummber;
         in>>tempRoad.length;
@@ -44,6 +44,24 @@ void Calculate::init(){
         }
         roadCollection.push_back(tempRoad);
     }
+
+
+    ofstream rout;
+    rout.open("D:\\roadData_copy.txt");
+    for(unsigned long long i=0;i<=59;i++){
+        Road tempRoad = roadCollection.at(i);
+        rout<<tempRoad.Nummber<<"\t";
+        rout<<tempRoad.length<<"\t";
+        rout<<tempRoad.endPointA<<"\t";
+        rout<<tempRoad.endPointB<<"\t";
+        rout<<tempRoad.pointNumber<<"\t";
+        for(unsigned long long j=0;j<tempRoad.pointNumber;j++){
+            rout<<tempRoad.pointList.at(j).x()<<"\t";
+            rout<<tempRoad.pointList.at(j).y()<<"\t";
+        }
+        rout<<"\n";
+    }
+
 
     in.close();
 }
@@ -107,23 +125,38 @@ void Calculate::updateRoute(int i,int k,int j){
 vector<Road> Calculate::getRoadList(vector<int> location){
 
     floyd();
-    vector<Road> temp;//返回location-1条路径
+    vector<Road> temp_return;//返回location-1条路径
+
     if(location.size()>=1){
         for(unsigned long long i=0;i<location.size()-1;i++){
-            temp.push_back(serachRoadNum(location.at(i),location.at(i+1)));
+            vector<Road> temp;
+            temp.clear();
+            temp = serachRoad(location.at(i),location.at(i+1));
+            for(unsigned long long c=0;c<temp.size();c++){
+                temp_return.push_back(temp.at(c));
+            }
         }
+    }
+
+    return temp_return;
+}
+
+vector<Road> Calculate::serachRoad(int i,int j){
+    vector<Road> temp;
+    for(unsigned long long k=0;k<path[i][j].size();k=k+2){
+        temp.push_back((serachRoadNum(path[i][j].at(k),path[i][j].at(k+1))));
     }
     return temp;
 }
 
-Road Calculate::serachRoadNum(int i,int j){
+Road Calculate::serachRoadNum(int i, int j){
     for(unsigned long long k=0;k<=58;k++){
-        if((roadCollection.at(k).endPointA==i)&&(roadCollection.at(k).endPointB==j)){
-            return roadCollection.at(k);
-        }
-        if((roadCollection.at(k).endPointA==j)&&(roadCollection.at(k).endPointB==i)){
-            return roadCollection.at(k);
-        }
+            if((roadCollection.at(k).endPointA==i)&&(roadCollection.at(k).endPointB==j)){
+                return roadCollection.at(k);
+            }
+            if((roadCollection.at(k).endPointA==j)&&(roadCollection.at(k).endPointB==i)){
+                return roadCollection.at(k);
+            }
     }
-    return Road();
+    return roadCollection.at(59);
 }

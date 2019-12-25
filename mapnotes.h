@@ -25,13 +25,14 @@ public:
     vector<int> location;
     vector<Road> re;
     ~MapNotes();
-
+    void updateText();
 private slots:
-    void on_BulidH_clicked();
 
-    void on_BulidY_clicked();
+    void on_Bulid0_clicked();
 
-    void on_BuildT_clicked();
+    void on_Build1_clicked();
+
+    void on_Bulid2_clicked();
 
 private:
     Ui::MapNotes *ui;

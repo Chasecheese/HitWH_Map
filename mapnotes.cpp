@@ -19,6 +19,16 @@ void MapNotes::updateMapNotes(){
     update();
 }
 
+void MapNotes::updateText(){
+    string str;
+    for(unsigned long long i=0;i<location.size();i++){
+        int a = location.at(i);
+        str += to_string(a);
+        str += "->";
+    }
+    ui->yet->setText(QString::fromStdString(str));
+}
+
 void MapNotes::paintEvent(QPaintEvent *){
     QPainter painter(this);
     // 设置画笔颜色
@@ -29,7 +39,7 @@ void MapNotes::paintEvent(QPaintEvent *){
     //调色板
     QPen pen;
     pen.setWidth(3);
-    QColor squreColor = colorTable[3];//绘制bubble
+    QColor squreColor = colorTable[2];//绘制bubble
     pen.setColor(squreColor.light());
     painter.setPen(pen);
     painter.setBrush(squreColor);
@@ -50,17 +60,20 @@ MapNotes::~MapNotes()
     delete ui;
 }
 
-void MapNotes::on_BulidH_clicked()
+void MapNotes::on_Bulid0_clicked()
 {
     location.push_back(0);
+    updateText();
 }
 
-void MapNotes::on_BulidY_clicked()
+void MapNotes::on_Build1_clicked()
 {
     location.push_back(1);
+    updateText();
 }
 
-void MapNotes::on_BuildT_clicked()
+void MapNotes::on_Bulid2_clicked()
 {
     location.push_back(2);
+    updateText();
 }
