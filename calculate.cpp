@@ -79,7 +79,7 @@ void Calculate::Floyd(){
     }
     out.close();
 
-    ofstream pout;
+    ofstream pout;//打印路径表
     pout.open("D:\\path.txt");
     for(unsigned long long i=0;i<=27;i++){
         for(unsigned long long j=0;j<=27;j++){
