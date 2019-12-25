@@ -55,29 +55,6 @@ void MapNotes::paintEvent(QPaintEvent *){
     }
 }
 
-MapNotes::~MapNotes()
-{
-    delete ui;
-}
-
-void MapNotes::on_Bulid0_clicked()
-{
-    location.push_back(0);
-    updateText();
-}
-
-void MapNotes::on_Build1_clicked()
-{
-    location.push_back(1);
-    updateText();
-}
-
-void MapNotes::on_Bulid2_clicked()
-{
-    location.push_back(2);
-    updateText();
-}
-
 vector<Road> MapNotes::getRe() const
 {
     return re;
@@ -96,4 +73,169 @@ vector<int> MapNotes::getLocation() const
 void MapNotes::setLocation(const vector<int> &value)
 {
     location = value;
+}
+
+
+MapNotes::~MapNotes()
+{
+    delete ui;
+}
+
+void MapNotes::on_Build0_clicked()
+{
+    location.push_back(0);
+    updateText();
+}
+
+void MapNotes::on_Build1_clicked()
+{
+    location.push_back(1);
+    updateText();
+}
+
+void MapNotes::on_Build2_clicked()
+{
+    location.push_back(2);
+    updateText();
+}
+void MapNotes::on_Build3_clicked()
+{
+    location.push_back(3);
+    updateText();
+}
+
+void MapNotes::on_Build4_clicked()
+{
+    location.push_back(4);
+    updateText();
+}
+
+void MapNotes::on_Build5_clicked()
+{
+    location.push_back(5);
+    updateText();
+}
+void MapNotes::on_Build6_clicked()
+{
+    location.push_back(6);
+    updateText();
+}
+
+void MapNotes::on_Build7_clicked()
+{
+    location.push_back(7);
+    updateText();
+}
+
+void MapNotes::on_Build8_clicked()
+{
+    location.push_back(8);
+    updateText();
+}
+void MapNotes::on_Build9_clicked()
+{
+    location.push_back(9);
+    updateText();
+}
+
+void MapNotes::on_Build10_clicked()
+{
+    location.push_back(10);
+    updateText();
+}
+
+void MapNotes::on_Build11_clicked()
+{
+    location.push_back(11);
+    updateText();
+}
+void MapNotes::on_Build12_clicked()
+{
+    location.push_back(12);
+    updateText();
+}
+
+void MapNotes::on_Build13_clicked()
+{
+    location.push_back(13);
+    updateText();
+}
+
+void MapNotes::on_Build14_clicked()
+{
+    location.push_back(14);
+    updateText();
+}
+void MapNotes::on_Build15_clicked()
+{
+    location.push_back(15);
+    updateText();
+}
+
+void MapNotes::on_Build16_clicked()
+{
+    location.push_back(16);
+    updateText();
+}
+
+void MapNotes::on_Build17_clicked()
+{
+    location.push_back(17);
+    updateText();
+}
+void MapNotes::on_Build18_clicked()
+{
+    location.push_back(18);
+    updateText();
+}
+
+void MapNotes::on_Build19_clicked()
+{
+    location.push_back(19);
+    updateText();
+}
+
+void MapNotes::on_Build20_clicked()
+{
+    location.push_back(20);
+    updateText();
+}
+void MapNotes::on_Build21_clicked()
+{
+    location.push_back(21);
+    updateText();
+}
+
+void MapNotes::on_Build22_clicked()
+{
+    location.push_back(22);
+    updateText();
+}
+
+void MapNotes::on_Build23_clicked()
+{
+    location.push_back(23);
+    updateText();
+}
+void MapNotes::on_Build24_clicked()
+{
+    location.push_back(24);
+    updateText();
+}
+
+void MapNotes::on_Build25_clicked()
+{
+    location.push_back(25);
+    updateText();
+}
+
+void MapNotes::on_Build26_clicked()
+{
+    location.push_back(26);
+    updateText();
+}
+void MapNotes::on_Build27_clicked()
+{
+    location.push_back(27);
+    updateText();
 }
