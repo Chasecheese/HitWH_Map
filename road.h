@@ -14,8 +14,6 @@ public:
     vector<QPoint> pointList;     //拐点坐标容器
     unsigned long long pointNumber;      //点数量
     int endPointA,endPointB;//端点A，端点B
-
-
 };
 
 #endif // ROAD_H
