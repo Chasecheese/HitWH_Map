@@ -48,7 +48,7 @@ void Calculate::init(){
     in.close();
 }
 
-void Calculate::Floyd(){
+void Calculate::floyd(){
     init();
     //第一层循环选中介
     for(int k=0;k<28;k++){
@@ -106,23 +106,24 @@ void Calculate::updateRoute(int i,int k,int j){
 
 vector<Road> Calculate::getRoadList(vector<int> location){
 
-    //模拟计算
-    vector<int> roadlist = getRoadNum(location);
-    //得到路径的编号列表
-
-    vector<Road> temp;
-
-    for(unsigned long long i=0;i<roadlist.size();i++){
-
+    floyd();
+    vector<Road> temp;//返回location-1条路径
+    if(location.size()>=1){
+        for(unsigned long long i=0;i<location.size()-1;i++){
+            temp.push_back(serachRoadNum(location.at(i),location.at(i+1)));
+        }
     }
-    Floyd();
     return temp;
 }
 
-//通过结点编号获取路径编号
-vector<int> Calculate::getRoadNum(vector<int> location){
-    vector<int> temp;
-    for(int i=0;i<58;i++)
-    temp.push_back(i);
-    return temp;
+Road Calculate::serachRoadNum(int i,int j){
+    for(unsigned long long k=0;k<=58;k++){
+        if((roadCollection.at(k).endPointA==i)&&(roadCollection.at(k).endPointB==j)){
+            return roadCollection.at(k);
+        }
+        if((roadCollection.at(k).endPointA==j)&&(roadCollection.at(k).endPointB==i)){
+            return roadCollection.at(k);
+        }
+    }
+    return Road();
 }

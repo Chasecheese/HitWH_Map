@@ -12,11 +12,12 @@ class Calculate
 {
 public:
     Calculate();
-    vector<Road> getRoadList(vector<int> location);
-    vector<int> getRoadNum(vector<int> location);
 
-    void Floyd();
+    vector<Road> getRoadList(vector<int> location);
+
+    void floyd();
     void updateRoute(int old,int newr1,int newr2);
+    Road serachRoadNum(int i,int j);
 
     int Dist[28][28];
     vector<int> path[28][28];
@@ -26,5 +27,7 @@ public:
 private:
 
 };
+
+
 
 #endif // CALCULATE_H
