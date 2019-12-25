@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         calculate.cpp \
+        hashtable.cpp \
         main.cpp \
         mainwindow.cpp \
         mapboard.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
 
 HEADERS += \
         calculate.h \
+        hashtable.h \
         mainwindow.h \
         mapboard.h \
         mapnotes.h \

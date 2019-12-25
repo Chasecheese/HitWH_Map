@@ -47,11 +47,11 @@ void MapNotes::paintEvent(QPaintEvent *){
     //按照坐标绘制路线
     QPoint* C;
     for(unsigned long long i=0;i<re.size();i++){
-        C = new QPoint[re.at(i).pointNumber];
-        for(unsigned long long j=0;j<re.at(i).pointNumber;j++){
-            C[j] = re.at(i).pointList.at(j);
+        C = new QPoint[re.at(i).getPointNumber()];
+        for(unsigned long long j=0;j<re.at(i).getPointNumber();j++){
+            C[j] = re.at(i).getPointList().at(j);
         }
-        painter.drawPolyline(C,static_cast<int>(re.at(i).pointNumber));
+        painter.drawPolyline(C,static_cast<int>(re.at(i).getPointNumber()));
     }
 }
 
@@ -76,4 +76,24 @@ void MapNotes::on_Bulid2_clicked()
 {
     location.push_back(2);
     updateText();
+}
+
+vector<Road> MapNotes::getRe() const
+{
+    return re;
+}
+
+void MapNotes::setRe(const vector<Road> &value)
+{
+    re = value;
+}
+
+vector<int> MapNotes::getLocation() const
+{
+    return location;
+}
+
+void MapNotes::setLocation(const vector<int> &value)
+{
+    location = value;
 }

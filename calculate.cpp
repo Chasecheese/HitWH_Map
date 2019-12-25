@@ -28,36 +28,49 @@ void Calculate::init(){
 
     ifstream in;
     roadCollection.clear();
+    hashTable.InitHashTable();
     in.open("D:\\roadData.txt");
     for(int i=0;i<=59;i++){
         Road tempRoad;
-        in>>tempRoad.Nummber;
-        in>>tempRoad.length;
-        in>>tempRoad.endPointA;
-        in>>tempRoad.endPointB;
-        in>>tempRoad.pointNumber;
+        int number;
+        in>>number;
+        tempRoad.setNumber(number);
+        float length;
+        in>>length;
+        tempRoad.setLength(length);
+        int endPointA;
+        in>>endPointA;
+        tempRoad.setEndPointA(endPointA);
+        int endPointB;
+        in>>endPointB;
+        tempRoad.setEndPointB(endPointB);
+        unsigned long long pointNumber;
+        in>>pointNumber;
+        tempRoad.setPointNumber(pointNumber);
         int x,y;
-        for(int j=0;j<static_cast<int>(tempRoad.pointNumber);j++){
+        vector<QPoint> pointList;
+        for(int j=0;j<static_cast<int>(tempRoad.getPointNumber());j++){
             in>>x;
             in>>y;
-            tempRoad.pointList.push_back(QPoint(x,y));
+            pointList.push_back(QPoint(x,y));
+            tempRoad.setPointList(pointList);
         }
         roadCollection.push_back(tempRoad);
     }
 
 
     ofstream rout;
-    rout.open("D:\\roadData_copy.txt");
+    rout.open("D:\\roadData_copy0.txt");
     for(unsigned long long i=0;i<=59;i++){
         Road tempRoad = roadCollection.at(i);
-        rout<<tempRoad.Nummber<<"\t";
-        rout<<tempRoad.length<<"\t";
-        rout<<tempRoad.endPointA<<"\t";
-        rout<<tempRoad.endPointB<<"\t";
-        rout<<tempRoad.pointNumber<<"\t";
-        for(unsigned long long j=0;j<tempRoad.pointNumber;j++){
-            rout<<tempRoad.pointList.at(j).x()<<"\t";
-            rout<<tempRoad.pointList.at(j).y()<<"\t";
+        rout<<tempRoad.getNumber()<<"\t";
+        rout<<tempRoad.getLength()<<"\t";
+        rout<<tempRoad.getEndPointA()<<"\t";
+        rout<<tempRoad.getEndPointB()<<"\t";
+        rout<<tempRoad.getPointNumber()<<"\t";
+        for(unsigned long long j=0;j<tempRoad.getPointNumber();j++){
+            rout<<tempRoad.getPointList().at(j).x()<<"\t";
+            rout<<tempRoad.getPointList().at(j).y()<<"\t";
         }
         rout<<"\n";
     }
@@ -151,10 +164,10 @@ vector<Road> Calculate::serachRoad(int i,int j){
 
 Road Calculate::serachRoadNum(int i, int j){
     for(unsigned long long k=0;k<=58;k++){
-            if((roadCollection.at(k).endPointA==i)&&(roadCollection.at(k).endPointB==j)){
+            if((roadCollection.at(k).getEndPointA()==i)&&(roadCollection.at(k).getEndPointB()==j)){
                 return roadCollection.at(k);
             }
-            if((roadCollection.at(k).endPointA==j)&&(roadCollection.at(k).endPointB==i)){
+            if((roadCollection.at(k).getEndPointA()==j)&&(roadCollection.at(k).getEndPointB()==i)){
                 return roadCollection.at(k);
             }
     }

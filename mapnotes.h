@@ -22,10 +22,14 @@ public:
     void updateMapNotes();
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *event);
-    vector<int> location;
-    vector<Road> re;
     ~MapNotes();
     void updateText();
+    vector<int> getLocation() const;
+    void setLocation(const vector<int> &value);
+
+    vector<Road> getRe() const;
+    void setRe(const vector<Road> &value);
+
 private slots:
 
     void on_Bulid0_clicked();
@@ -37,6 +41,8 @@ private slots:
 private:
     Ui::MapNotes *ui;
     Route route;
+    vector<int> location;
+    vector<Road> re;
 };
 
 #endif // MAPNOTES_H

@@ -13,13 +13,14 @@ class MapBoard : public QWidget
     Q_OBJECT
 
 public:
-    MapNotes* mapnotes;
+
     explicit MapBoard(QWidget *parent = nullptr);
     void updateBoard();
     ~MapBoard();
 
 private:
     Ui::MapBoard *ui;
+    MapNotes* mapnotes;
 };
 
 #endif // MAPBOARD_H
