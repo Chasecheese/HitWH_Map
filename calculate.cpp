@@ -6,16 +6,17 @@ Calculate::Calculate()
 }
 
 void Calculate::init(){
-    ifstream in0;
-    in0.open("D:\\distData.txt");
+
+    ifstream disIn;
+    disIn.open("D:\\distData.txt");
     for(int i=0;i<=27;i++){
         for(int j=0;j<=27;j++){
-            in0>>Map[i][j];
+            disIn>>Map[i][j];
             Dist[i][j]=Map[i][j];
             //初始邻接矩阵
         }
     }
-    in0.close();
+    disIn.close();
 
     for(int i=0;i<=27;i++){
         for(int j=0;j<=27;j++){
@@ -30,7 +31,7 @@ void Calculate::init(){
     roadCollection.clear();
     hashTable.InitHashTable();
     in.open("D:\\roadData.txt");
-    for(int i=0;i<=59;i++){
+    for(int i=0;i<=58;i++){
         Road tempRoad;
         int number;
         in>>number;
@@ -59,10 +60,9 @@ void Calculate::init(){
         hashTable.insertHash(tempRoad);
     }
 
-
     ofstream rout;
     rout.open("D:\\roadData_copy.txt");
-    for(unsigned long long i=0;i<=59;i++){
+    for(unsigned long long i=0;i<=58;i++){
         Road tempRoad = roadCollection.at(i);
         rout<<tempRoad.getNumber()<<"\t";
         rout<<tempRoad.getLength()<<"\t";
@@ -93,18 +93,17 @@ void Calculate::init(){
             hout<<"\n";
         }
     }
-
     in.close();
 }
 
 void Calculate::floyd(){
     init();
     //第一层循环选中介
-    for(int k=0;k<28;k++){
+    for(int k=0;k<=27;k++){
         //第二层循环选择使用该中介要改造的行
-        for(int i=0;i<28;i++){
+        for(int i=0;i<=27;i++){
             //第三层循环，改造改行的每一个元素
-            for(int j=0;j<28;j++){
+            for(int j=0;j<=27;j++){
                 if(Dist[i][j]!=-1&&Dist[i][k]!=-1&&Dist[k][j]!=-1){
                     if(Dist[i][j]>Dist[i][k]+Dist[k][j]){
                         Dist[i][j] = Dist[i][k]+Dist[k][j];
@@ -175,13 +174,17 @@ vector<Road> Calculate::getRoadList(vector<int> location){
 vector<Road> Calculate::serachRoad(int i,int j){
     vector<Road> temp;
     for(unsigned long long k=0;k<path[i][j].size();k=k+2){
-        temp.push_back((serachRoadNum(path[i][j].at(k),path[i][j].at(k+1))));
-    //    unsigned long long addr = hashTable.searchHash(path[i][j].at(k),path[i][j].at(k+1));
-//        temp.push_back(hashTable.road[addr]);
-
+//        temp.push_back((serachRoadNum(path[i][j].at(k),path[i][j].at(k+1))));
+        temp.push_back(searchByhash(path[i][j].at(k),path[i][j].at(k+1)));
     }
     return temp;
 }
+
+Road Calculate::searchByhash(int i, int j){
+    unsigned long long addr = hashTable.searchHash(i,j);
+    return hashTable.road[addr];
+}
+
 
 Road Calculate::serachRoadNum(int i, int j){
     for(unsigned long long k=0;k<=58;k++){
@@ -192,5 +195,5 @@ Road Calculate::serachRoadNum(int i, int j){
                 return roadCollection.at(k);
             }
     }
-    return roadCollection.at(59);
+    return Road();
 }

@@ -27,13 +27,10 @@ void HashTable::insertHash(Road r){
 }
 
 int HashTable::equal(int x, int y,Road r){
-    int flag = 1;
-    if(x!=r.getEndPointA())
-        flag = 0;
-    if(y!=r.getEndPointB())
-        flag = 0;
+    int flag = 0;
+    if((x==r.getEndPointA()&&y==r.getEndPointB())||(y==r.getEndPointA()&&x==r.getEndPointB()))
+        flag = 1;
     return flag;
-
 }
 
 unsigned long long HashTable::getLength() const
@@ -50,10 +47,8 @@ void HashTable::setLength(unsigned long long value)
 
 unsigned long long HashTable::searchHash(int x,int y){
     unsigned long long addr = Hash(x,y);
-
     while(!equal(x,y,road[addr])){
         addr = (addr+1)%(this->length);
     }
-
     return addr;
 }

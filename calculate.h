@@ -24,7 +24,9 @@ public:
     vector<int> path[28][28];
     int Map[28][28];
     vector<Road> roadCollection;
-    HashTable hashTable = HashTable(100);
+    HashTable hashTable = HashTable(200);
+
+    Road searchByhash(int i,int j);
 
 private:
 

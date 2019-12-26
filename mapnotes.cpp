@@ -260,7 +260,6 @@ void MapNotes::on_Build27_clicked()
     updateText();
 }
 
-
 void MapNotes::on_radioButton0_clicked()
 {
     location.push_back(0);
