@@ -56,11 +56,12 @@ void Calculate::init(){
             tempRoad.setPointList(pointList);
         }
         roadCollection.push_back(tempRoad);
+        hashTable.insertHash(tempRoad);
     }
 
 
     ofstream rout;
-    rout.open("D:\\roadData_copy0.txt");
+    rout.open("D:\\roadData_copy.txt");
     for(unsigned long long i=0;i<=59;i++){
         Road tempRoad = roadCollection.at(i);
         rout<<tempRoad.getNumber()<<"\t";
@@ -75,6 +76,23 @@ void Calculate::init(){
         rout<<"\n";
     }
 
+    ofstream hout;
+    hout.open("D:\\roadData_hash.txt");
+
+    for(unsigned long long i=0;i<hashTable.getLength();i++){
+        if(hashTable.road[i].getNumber()!=-1){
+            hout<<hashTable.road[i].getNumber()<<"\t";
+            hout<<hashTable.road[i].getLength()<<"\t";
+            hout<<hashTable.road[i].getEndPointA()<<"\t";
+            hout<<hashTable.road[i].getEndPointB()<<"\t";
+            hout<<hashTable.road[i].getPointNumber()<<"\t";
+            for(unsigned long long j=0;j<hashTable.road[i].getPointNumber();j++){
+                hout<<hashTable.road[i].getPointList().at(j).x()<<"\t";
+                hout<<hashTable.road[i].getPointList().at(j).y()<<"\t";
+            }
+            hout<<"\n";
+        }
+    }
 
     in.close();
 }
@@ -158,6 +176,9 @@ vector<Road> Calculate::serachRoad(int i,int j){
     vector<Road> temp;
     for(unsigned long long k=0;k<path[i][j].size();k=k+2){
         temp.push_back((serachRoadNum(path[i][j].at(k),path[i][j].at(k+1))));
+    //    unsigned long long addr = hashTable.searchHash(path[i][j].at(k),path[i][j].at(k+1));
+//        temp.push_back(hashTable.road[addr]);
+
     }
     return temp;
 }

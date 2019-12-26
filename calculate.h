@@ -26,7 +26,6 @@ public:
     vector<Road> roadCollection;
     HashTable hashTable = HashTable(100);
 
-
 private:
 
 };

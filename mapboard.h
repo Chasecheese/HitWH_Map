@@ -16,6 +16,7 @@ public:
 
     explicit MapBoard(QWidget *parent = nullptr);
     void updateBoard();
+    void clear();
     ~MapBoard();
 
 private:

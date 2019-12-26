@@ -1,9 +1,9 @@
 ﻿#include "road.h"
 
 Road::Road(){
-    this->setNumber(-1);
-    this->setPointNumber(-1);
-    this->setLength(-1);
+    Number = -1;
+    pointNumber = -1;
+    length = -1;
 }
 
 int Road::getEndPointB() const

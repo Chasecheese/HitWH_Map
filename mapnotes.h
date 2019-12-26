@@ -24,6 +24,7 @@ public:
     void mousePressEvent(QMouseEvent *event);
     ~MapNotes();
     void updateText();
+    void clear();
     vector<int> getLocation() const;
     void setLocation(const vector<int> &value);
 
@@ -49,6 +50,7 @@ private slots:
     void on_Build7_clicked();
 
     void on_Build8_clicked();
+
     void on_Build9_clicked();
 
     void on_Build10_clicked();
@@ -60,6 +62,7 @@ private slots:
     void on_Build13_clicked();
 
     void on_Build14_clicked();
+
     void on_Build15_clicked();
 
     void on_Build16_clicked();
@@ -71,6 +74,7 @@ private slots:
     void on_Build19_clicked();
 
     void on_Build20_clicked();
+
     void on_Build21_clicked();
 
     void on_Build22_clicked();
@@ -84,6 +88,12 @@ private slots:
     void on_Build26_clicked();
 
     void on_Build27_clicked();
+
+    void on_radioButton27_clicked();
+
+    void on_radioButton0_clicked();
+
+    void on_radioButton_clicked();
 
 private:
     Ui::MapNotes *ui;

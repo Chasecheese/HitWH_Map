@@ -14,6 +14,11 @@ void MapBoard::updateBoard(){
     mapnotes->updateMapNotes();
 }
 
+void MapBoard::clear(){
+    mapnotes->clear();
+    mapnotes->updateMapNotes();
+}
+
 MapBoard::~MapBoard()
 {
     delete ui;

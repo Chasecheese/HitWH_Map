@@ -6,6 +6,18 @@ MapNotes::MapNotes(QWidget *parent) :
     ui(new Ui::MapNotes)
 {
     ui->setupUi(this);
+    ui->radioButton0->setStyleSheet("QRadioButton::indicator {width:15px;height:15px;border-radius:7px}"
+                                    "QRadioButton::indicator:checked {background-color:green;}"
+                                    "QRadioButton::indicator:unchecked {background-color:red;}"
+                                    );
+    ui->radioButton27->setStyleSheet("QRadioButton::indicator {width:15px;height:15px;border-radius:7px}"
+                                    "QRadioButton::indicator:checked {background-color:green;}"
+                                    "QRadioButton::indicator:unchecked {background-color:red;}"
+                                    );
+    ui->radioButton->setStyleSheet("QRadioButton::indicator {width:15px;height:15px;border-radius:7px}"
+                                    "QRadioButton::indicator:checked {background-color:green;}"
+                                    "QRadioButton::indicator:unchecked {background-color:red;}"
+                                    );
 }
 void MapNotes::mousePressEvent(QMouseEvent *event){
     QPoint p_re = event->pos();
@@ -16,7 +28,15 @@ void MapNotes::mousePressEvent(QMouseEvent *event){
 void MapNotes::updateMapNotes(){
 
     re = route.getRoute(location);
+    updateText();
     update();
+}
+
+void MapNotes::clear(){
+    location.clear();
+    updateMapNotes();
+    ui->radioButton0->setChecked(false);
+    ui->radioButton27->setChecked(false);
 }
 
 void MapNotes::updateText(){
@@ -38,8 +58,8 @@ void MapNotes::paintEvent(QPaintEvent *){
     };
     //调色板
     QPen pen;
-    pen.setWidth(3);
-    QColor squreColor = colorTable[2];//绘制bubble
+    pen.setWidth(5);
+    QColor squreColor = colorTable[1];//绘制bubble
     pen.setColor(squreColor.light());
     painter.setPen(pen);
     painter.setBrush(squreColor);
@@ -239,3 +259,23 @@ void MapNotes::on_Build27_clicked()
     location.push_back(27);
     updateText();
 }
+
+
+void MapNotes::on_radioButton0_clicked()
+{
+    location.push_back(0);
+    updateText();
+}
+
+void MapNotes::on_radioButton27_clicked()
+{
+    location.push_back(27);
+    updateText();
+}
+
+void MapNotes::on_radioButton_clicked()
+{
+    location.push_back(23);
+    updateText();
+}
+

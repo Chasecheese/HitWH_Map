@@ -13,39 +13,47 @@ void HashTable::InitHashTable(){
     }
 }
 
-unsigned long long HashTable::Hash(Road r){
-    unsigned long long x = static_cast<unsigned long long>(r.getEndPointA());
-    unsigned long long y = static_cast<unsigned long long>(r.getEndPointB());
-    return (x+y)%length;
+unsigned long long HashTable::Hash(int x,int y){
+    return (static_cast<unsigned long long>(x+y)%length);
 
 }
 
 void HashTable::insertHash(Road r){
-    unsigned long long addr = Hash(r);
-    while(static_cast<int>(road[addr].getPointNumber())==-1){
+    unsigned long long addr = Hash(r.getEndPointA(),r.getEndPointB());
+    while(static_cast<int>(road[addr].getPointNumber())!=-1){
         addr = (addr+1)%(this->length);
     }
     road[addr] = r;
 }
 
-int HashTable::equal(Road A, Road B){
+int HashTable::equal(int x, int y,Road r){
     int flag = 1;
-    if(A.getEndPointA()!=B.getEndPointA())
+    if(x!=r.getEndPointA())
         flag = 0;
-    if(A.getEndPointB()!=B.getEndPointB())
+    if(y!=r.getEndPointB())
         flag = 0;
     return flag;
 
 }
 
+unsigned long long HashTable::getLength() const
+{
+    return length;
+}
 
-unsigned long long HashTable::searchHash(Road r){
-    unsigned long long addr = Hash(r);
+void HashTable::setLength(unsigned long long value)
+{
+    length = value;
+}
 
-    while(!equal(r,road[addr])){
+
+
+unsigned long long HashTable::searchHash(int x,int y){
+    unsigned long long addr = Hash(x,y);
+
+    while(!equal(x,y,road[addr])){
         addr = (addr+1)%(this->length);
     }
 
     return addr;
-
 }

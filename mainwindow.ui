@@ -40,14 +40,27 @@
    <widget class="QPushButton" name="Route">
     <property name="geometry">
      <rect>
-      <x>1080</x>
-      <y>50</y>
-      <width>93</width>
-      <height>28</height>
+      <x>920</x>
+      <y>490</y>
+      <width>131</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>路径规划</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Clear">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>490</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>清除路径</string>
     </property>
    </widget>
   </widget>

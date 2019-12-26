@@ -11,17 +11,23 @@ public:
 
     void InitHashTable();
 
-    unsigned long long Hash(Road);
+    unsigned long long Hash(int x,int y);
 
     void insertHash(Road);
 
-    unsigned long long searchHash(Road);
+    unsigned long long searchHash(int x,int y);
 
-    int equal(Road,Road);
+    int equal(int,int,Road);
+
+    Road* road;
+
+    unsigned long long getLength() const;
+    void setLength(unsigned long long value);
 
 private:
-    Road* road;
+
     unsigned long long length;
+
 };
 
 #endif // HASHTABLE_H
