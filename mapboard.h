@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <mapnotes.h>
 
+
 namespace Ui {
 class MapBoard;
 }
@@ -22,6 +23,7 @@ public:
 private:
     Ui::MapBoard *ui;
     MapNotes* mapnotes;
+
 };
 
 #endif // MAPBOARD_H

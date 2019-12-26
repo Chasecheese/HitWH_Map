@@ -1,23 +1,30 @@
 ﻿#include "mapnotes.h"
 #include "ui_mapnotes.h"
 
+
+
 MapNotes::MapNotes(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MapNotes)
 {
-    ui->setupUi(this);
-    ui->radioButton0->setStyleSheet("QRadioButton::indicator {width:15px;height:15px;border-radius:7px}"
-                                    "QRadioButton::indicator:checked {background-color:green;}"
-                                    "QRadioButton::indicator:unchecked {background-color:red;}"
-                                    );
-    ui->radioButton27->setStyleSheet("QRadioButton::indicator {width:15px;height:15px;border-radius:7px}"
-                                    "QRadioButton::indicator:checked {background-color:green;}"
-                                    "QRadioButton::indicator:unchecked {background-color:red;}"
-                                    );
-    ui->radioButton->setStyleSheet("QRadioButton::indicator {width:15px;height:15px;border-radius:7px}"
-                                    "QRadioButton::indicator:checked {background-color:green;}"
-                                    "QRadioButton::indicator:unchecked {background-color:red;}"
-                                    );
+    ui->setupUi(this);  
+    ifstream in;
+    in.open("D:\\points.txt");
+    int x,y;
+    for(int i=0;i<28;i++){
+        Build[i] = new QRadioButton(this);
+        in>>x;
+        in>>y;
+        Build[i]->move(x,y);
+        Build[i]->setText(QString::number(i));
+        Build[i]->setObjectName(QString::number(i));
+        connect(Build[i],SIGNAL(clicked()),this,SLOT(push()));
+//        connect(Build[i],SIGNAL(pressed()),this,SLOT(countTime()));
+//        connect(Build[i],SIGNAL(released()),this,SLOT(timestop()));
+    }
+//    connect(this,SIGNAL(timeout(int)),this,SLOT(longTimePress(int)));
+    connect(this,SIGNAL(twice(int)),this,SLOT(doubleClicked(int)));
+    timer = new QTimer();
 }
 void MapNotes::mousePressEvent(QMouseEvent *event){
     QPoint p_re = event->pos();
@@ -35,8 +42,6 @@ void MapNotes::updateMapNotes(){
 void MapNotes::clear(){
     location.clear();
     updateMapNotes();
-    ui->radioButton0->setChecked(false);
-    ui->radioButton27->setChecked(false);
 }
 
 void MapNotes::updateText(){
@@ -101,180 +106,48 @@ MapNotes::~MapNotes()
     delete ui;
 }
 
-void MapNotes::on_Build0_clicked()
-{
-    location.push_back(0);
-    updateText();
+void MapNotes::push(){
+    QRadioButton* btn = qobject_cast<QRadioButton*>(sender());
+    int num = btn->objectName().toInt();
+
+    if(timer->isActive()){
+        if(temp==num){
+            emit twice(num);
+            timer->stop();
+            timer = new QTimer();
+        }
+    }
+    else {
+        timer->start(1);
+        if(!(timer->isActive())){
+            location.push_back(num);
+            updateText();
+        }
+        temp = num;
+    }
+
 }
 
-void MapNotes::on_Build1_clicked()
-{
-    location.push_back(1);
-    updateText();
+void MapNotes::timestop(){
+    timer->stop();
+    timer = nullptr;
 }
 
-void MapNotes::on_Build2_clicked()
-{
-    location.push_back(2);
-    updateText();
-}
-void MapNotes::on_Build3_clicked()
-{
-    location.push_back(3);
-    updateText();
+void MapNotes::longTimePress(int i){
+    qDebug()<<i<<endl;
 }
 
-void MapNotes::on_Build4_clicked()
-{
-    location.push_back(4);
-    updateText();
+void MapNotes::countTime(){
+
+    QRadioButton* btn = qobject_cast<QRadioButton*>(sender());
+    int num = btn->objectName().toInt();
+    timer = new QTimer();
+    timer->start(100);
+
+    if(!(timer->isActive())&&!timer)
+        emit timeout(num);
 }
 
-void MapNotes::on_Build5_clicked()
-{
-    location.push_back(5);
-    updateText();
+void MapNotes::doubleClicked(int i){
+    qDebug()<<i<<"twice"<<endl;
 }
-void MapNotes::on_Build6_clicked()
-{
-    location.push_back(6);
-    updateText();
-}
-
-void MapNotes::on_Build7_clicked()
-{
-    location.push_back(7);
-    updateText();
-}
-
-void MapNotes::on_Build8_clicked()
-{
-    location.push_back(8);
-    updateText();
-}
-void MapNotes::on_Build9_clicked()
-{
-    location.push_back(9);
-    updateText();
-}
-
-void MapNotes::on_Build10_clicked()
-{
-    location.push_back(10);
-    updateText();
-}
-
-void MapNotes::on_Build11_clicked()
-{
-    location.push_back(11);
-    updateText();
-}
-void MapNotes::on_Build12_clicked()
-{
-    location.push_back(12);
-    updateText();
-}
-
-void MapNotes::on_Build13_clicked()
-{
-    location.push_back(13);
-    updateText();
-}
-
-void MapNotes::on_Build14_clicked()
-{
-    location.push_back(14);
-    updateText();
-}
-void MapNotes::on_Build15_clicked()
-{
-    location.push_back(15);
-    updateText();
-}
-
-void MapNotes::on_Build16_clicked()
-{
-    location.push_back(16);
-    updateText();
-}
-
-void MapNotes::on_Build17_clicked()
-{
-    location.push_back(17);
-    updateText();
-}
-void MapNotes::on_Build18_clicked()
-{
-    location.push_back(18);
-    updateText();
-}
-
-void MapNotes::on_Build19_clicked()
-{
-    location.push_back(19);
-    updateText();
-}
-
-void MapNotes::on_Build20_clicked()
-{
-    location.push_back(20);
-    updateText();
-}
-void MapNotes::on_Build21_clicked()
-{
-    location.push_back(21);
-    updateText();
-}
-
-void MapNotes::on_Build22_clicked()
-{
-    location.push_back(22);
-    updateText();
-}
-
-void MapNotes::on_Build23_clicked()
-{
-    location.push_back(23);
-    updateText();
-}
-void MapNotes::on_Build24_clicked()
-{
-    location.push_back(24);
-    updateText();
-}
-
-void MapNotes::on_Build25_clicked()
-{
-    location.push_back(25);
-    updateText();
-}
-
-void MapNotes::on_Build26_clicked()
-{
-    location.push_back(26);
-    updateText();
-}
-void MapNotes::on_Build27_clicked()
-{
-    location.push_back(27);
-    updateText();
-}
-
-void MapNotes::on_radioButton0_clicked()
-{
-    location.push_back(0);
-    updateText();
-}
-
-void MapNotes::on_radioButton27_clicked()
-{
-    location.push_back(27);
-    updateText();
-}
-
-void MapNotes::on_radioButton_clicked()
-{
-    location.push_back(23);
-    updateText();
-}
-
