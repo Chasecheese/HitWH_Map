@@ -6,6 +6,8 @@
 #include <fstream>
 #include <iostream>
 #include <hashtable.h>
+#include <queue.h>
+
 using namespace std;
 
 class Calculate

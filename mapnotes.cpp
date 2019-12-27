@@ -8,8 +8,6 @@ MapNotes::MapNotes(QWidget *parent) :
     ui(new Ui::MapNotes)
 {
     ui->setupUi(this);  
-    QPalette   pal;
-    pal.setColor(QPalette::ButtonText, QColor(255,0,0));
     ui->HidenButton->setVisible(false);
     ifstream in;
     in.open("D:\\points.txt");
@@ -20,6 +18,7 @@ MapNotes::MapNotes(QWidget *parent) :
         in>>x;
         in>>y;
         Build[i]->move(x,y);
+        Build[i]->setStyleSheet("color: white");
         Build[i]->setText(QString::number(i));
         Build[i]->setObjectName(QString::number(i));
         connect(Build[i],SIGNAL(clickedOnce()),this,SLOT(push()));
@@ -30,7 +29,6 @@ MapNotes::MapNotes(QWidget *parent) :
                                             );
     }
 
-    connect(this->ui->HidenButton,SIGNAL(clicked()),this,SLOT(setTest()));
     connect(this,SIGNAL(setHide()),this,SLOT(chooseHiden()));
 }
 void MapNotes::mousePressEvent(QMouseEvent *event){
@@ -47,7 +45,7 @@ void MapNotes::updateMapNotes(){
 }
 
 void MapNotes::clear(){
-    location.clear();
+   location.clear();
     updateMapNotes();
 }
 
@@ -61,17 +59,19 @@ void MapNotes::updateText(){
     ui->yet->setText(QString::fromStdString(str));
 }
 
+
 void MapNotes::paintEvent(QPaintEvent *){
     QPainter painter(this);
     // 设置画笔颜色
-    static const QRgb colorTable[8] = {
-        0x000000,0xFFA500, 0xCC6666, 0x66CC66, 0x00BFFF,
-               0xBDB76B, 0xCC66CC,0x000000
+    static const QRgb colorTable[6] = {
+        0xFFA500, 0xCC6666, 0x66CC66, 0x00BFFF,
+               0xBDB76B, 0xCC66CC
     };
     //调色板
+    int j=0;
     QPen pen;
     pen.setWidth(5);
-    QColor squreColor = colorTable[1];//绘制bubble
+    QColor squreColor = colorTable[j++];//绘制bubble
     pen.setColor(squreColor.light());
     painter.setPen(pen);
     painter.setBrush(squreColor);
@@ -79,11 +79,19 @@ void MapNotes::paintEvent(QPaintEvent *){
     //按照坐标绘制路线
     QPoint* C;
     for(unsigned long long i=0;i<re.size();i++){
-        C = new QPoint[re.at(i).getPointNumber()];
-        for(unsigned long long j=0;j<re.at(i).getPointNumber();j++){
-            C[j] = re.at(i).getPointList().at(j);
+        if(re.at(i).getPointNumber()==static_cast<unsigned long long>(-1)){
+            QColor squreColor = colorTable[j++%6];//绘制bubble
+            pen.setColor(squreColor.light());
+            painter.setPen(pen);
+            painter.setBrush(squreColor);
         }
-        painter.drawPolyline(C,static_cast<int>(re.at(i).getPointNumber()));
+        else{
+            C = new QPoint[re.at(i).getPointNumber()];
+            for(unsigned long long j=0;j<re.at(i).getPointNumber();j++){
+                C[j] = re.at(i).getPointList().at(j);
+            }
+            painter.drawPolyline(C,static_cast<int>(re.at(i).getPointNumber()));
+        }
     }
 }
 
@@ -95,16 +103,6 @@ vector<Road> MapNotes::getRe() const
 void MapNotes::setRe(const vector<Road> &value)
 {
     re = value;
-}
-
-vector<int> MapNotes::getLocation() const
-{
-    return location;
-}
-
-void MapNotes::setLocation(const vector<int> &value)
-{
-    location = value;
 }
 
 
@@ -141,23 +139,13 @@ void MapNotes::push(){
     emit setHide();
 }
 
+
 void MapNotes::doubleClicked(){
     Mybtn* btn = qobject_cast<Mybtn*>(sender());
     int num = btn->objectName().toInt();
     qDebug()<<num;
     Build[num]->setCheckable(false);
     emit setHide();
-}
-
-void MapNotes::set(vector<int> temp){
-
-    for(unsigned long long i=0;i<temp.size();i++){
-        Build[temp.at(i)]->setChecked(true);
-    }
-}
-
-void MapNotes::setTest(){
-
 }
 
 void MapNotes::chooseHiden(){

@@ -2,7 +2,7 @@
 
 Road::Road(){
     Number = -1;
-    pointNumber = -1;
+    pointNumber = static_cast<unsigned long long>(-1);
     length = -1;
 }
 

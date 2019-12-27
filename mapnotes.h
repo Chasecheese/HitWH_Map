@@ -35,8 +35,6 @@ public:
     ~MapNotes();
     void updateText();
     void clear();
-    vector<int> getLocation() const;
-    void setLocation(const vector<int> &value);
 
     vector<Road> getRe() const;
     void setRe(const vector<Road> &value);
@@ -44,8 +42,6 @@ public:
 private slots:
     void push();
     void doubleClicked();
-    void set(vector<int>);
-    void setTest();
     void chooseHiden();
 
 signals:

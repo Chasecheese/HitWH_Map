@@ -155,6 +155,7 @@ void Calculate::updateRoute(int i,int k,int j){
 vector<Road> Calculate::getRoadList(vector<int> location){
 
     floyd();
+
     vector<Road> temp_return;//返回location-1条路径
 
     if(location.size()>=1){
@@ -165,6 +166,7 @@ vector<Road> Calculate::getRoadList(vector<int> location){
             for(unsigned long long c=0;c<temp.size();c++){
                 temp_return.push_back(temp.at(c));
             }
+            temp_return.push_back(Road());
         }
     }
 
