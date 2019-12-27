@@ -174,7 +174,6 @@ vector<Road> Calculate::getRoadList(vector<int> location){
 vector<Road> Calculate::serachRoad(int i,int j){
     vector<Road> temp;
     for(unsigned long long k=0;k<path[i][j].size();k=k+2){
-//        temp.push_back((serachRoadNum(path[i][j].at(k),path[i][j].at(k+1))));
         temp.push_back(searchByhash(path[i][j].at(k),path[i][j].at(k+1)));
     }
     return temp;

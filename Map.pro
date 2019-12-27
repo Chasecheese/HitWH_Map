@@ -31,6 +31,8 @@ SOURCES += \
         mainwindow.cpp \
         mapboard.cpp \
         mapnotes.cpp \
+        mybtn.cpp \
+        queue.cpp \
         road.cpp \
         route.cpp
 
@@ -40,6 +42,8 @@ HEADERS += \
         mainwindow.h \
         mapboard.h \
         mapnotes.h \
+        mybtn.h \
+        queue.h \
         road.h \
         route.h
 

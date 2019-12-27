@@ -25,6 +25,9 @@
    <property name="text">
     <string/>
    </property>
+   <property name="pixmap">
+    <pixmap>../../../HITWH75.jpg</pixmap>
+   </property>
    <property name="scaledContents">
     <bool>true</bool>
    </property>

@@ -8,23 +8,30 @@ MapNotes::MapNotes(QWidget *parent) :
     ui(new Ui::MapNotes)
 {
     ui->setupUi(this);  
+    QPalette   pal;
+    pal.setColor(QPalette::ButtonText, QColor(255,0,0));
+    ui->HidenButton->setVisible(false);
     ifstream in;
     in.open("D:\\points.txt");
     int x,y;
-    for(int i=0;i<28;i++){
-        Build[i] = new QRadioButton(this);
+
+    for(int i=0;i<33;i++){
+        Build[i] = new Mybtn(this);
         in>>x;
         in>>y;
         Build[i]->move(x,y);
         Build[i]->setText(QString::number(i));
         Build[i]->setObjectName(QString::number(i));
-        connect(Build[i],SIGNAL(clicked()),this,SLOT(push()));
-//        connect(Build[i],SIGNAL(pressed()),this,SLOT(countTime()));
-//        connect(Build[i],SIGNAL(released()),this,SLOT(timestop()));
+        connect(Build[i],SIGNAL(clickedOnce()),this,SLOT(push()));
+        connect(Build[i],SIGNAL(clickedTwice()),this,SLOT(doubleClicked()));
+        Build[i]->setStyleSheet("QRadioButton::indicator {width:15px;height:15px;border-radius:7px}"
+                                            "QRadioButton::indicator:checked {background-color:red;}"
+                                            "QRadioButton::indicator:unchecked {background-color:white;}"
+                                            );
     }
-//    connect(this,SIGNAL(timeout(int)),this,SLOT(longTimePress(int)));
-    connect(this,SIGNAL(twice(int)),this,SLOT(doubleClicked(int)));
-    timer = new QTimer();
+
+    connect(this->ui->HidenButton,SIGNAL(clicked()),this,SLOT(setTest()));
+    connect(this,SIGNAL(setHide()),this,SLOT(chooseHiden()));
 }
 void MapNotes::mousePressEvent(QMouseEvent *event){
     QPoint p_re = event->pos();
@@ -107,47 +114,53 @@ MapNotes::~MapNotes()
 }
 
 void MapNotes::push(){
-    QRadioButton* btn = qobject_cast<QRadioButton*>(sender());
+    Mybtn* btn = qobject_cast<Mybtn*>(sender());
     int num = btn->objectName().toInt();
-
-    if(timer->isActive()){
-        if(temp==num){
-            emit twice(num);
-            timer->stop();
-            timer = new QTimer();
-        }
+    switch (num) {
+    case 28:
+        location.push_back(15);
+        break;
+    case 29:
+        location.push_back(20);
+        break;
+    case 30:
+        location.push_back(21);
+        break;
+    case 31:
+        location.push_back(26);
+        break;
+    case 32:
+        location.push_back(25);
+        break;
+    default:
+        if(num<=27)
+        location.push_back(num);
+        break;
     }
-    else {
-        timer->start(1);
-        if(!(timer->isActive())){
-            location.push_back(num);
-            updateText();
-        }
-        temp = num;
-    }
-
+    updateText();
+    emit setHide();
 }
 
-void MapNotes::timestop(){
-    timer->stop();
-    timer = nullptr;
-}
-
-void MapNotes::longTimePress(int i){
-    qDebug()<<i<<endl;
-}
-
-void MapNotes::countTime(){
-
-    QRadioButton* btn = qobject_cast<QRadioButton*>(sender());
+void MapNotes::doubleClicked(){
+    Mybtn* btn = qobject_cast<Mybtn*>(sender());
     int num = btn->objectName().toInt();
-    timer = new QTimer();
-    timer->start(100);
-
-    if(!(timer->isActive())&&!timer)
-        emit timeout(num);
+    qDebug()<<num;
+    Build[num]->setCheckable(false);
+    emit setHide();
 }
 
-void MapNotes::doubleClicked(int i){
-    qDebug()<<i<<"twice"<<endl;
+void MapNotes::set(vector<int> temp){
+
+    for(unsigned long long i=0;i<temp.size();i++){
+        Build[temp.at(i)]->setChecked(true);
+    }
 }
+
+void MapNotes::setTest(){
+
+}
+
+void MapNotes::chooseHiden(){
+    this->ui->HidenButton->setChecked(true);
+}
+

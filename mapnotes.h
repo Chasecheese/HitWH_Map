@@ -10,9 +10,12 @@
 #include <QRadioButton>
 #include <QPushButton>
 #include <QTimer>
+#include <QTime>
 #include <QVBoxLayout>
 #include <QDebug>
 #include <string>
+#include <mybtn.h>
+#include <Windows.h>
 
 using namespace std;
 
@@ -40,21 +43,19 @@ public:
 
 private slots:
     void push();
-    void countTime();
-    void longTimePress(int);
-    void timestop();
-    void doubleClicked(int);
+    void doubleClicked();
+    void set(vector<int>);
+    void setTest();
+    void chooseHiden();
 
 signals:
-    void timeout(int);
-    void twice(int);
-
+    void setHide();
 private:
     Ui::MapNotes *ui;
     Route route;
     vector<int> location;
     vector<Road> re;
-    QRadioButton* Build[28];
+    Mybtn* Build[33];
     QGridLayout* controlBoard;
     QTimer* timer;
     int temp;
