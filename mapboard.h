@@ -20,6 +20,12 @@ public:
     void clear();
     ~MapBoard();
 
+private slots:
+    void on_clear_clicked();
+
+    void on_route_clicked();
+
+    void updateText(string);
 private:
     Ui::MapBoard *ui;
     MapNotes* mapnotes;

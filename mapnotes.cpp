@@ -10,16 +10,19 @@ MapNotes::MapNotes(QWidget *parent) :
     ui->setupUi(this);  
     ui->HidenButton->setVisible(false);
     ifstream in;
+    ifstream namein;
     in.open("D:\\points.txt");
+    namein.open("D:\\name.txt");
     int x,y;
+
 
     for(int i=0;i<33;i++){
         Build[i] = new Mybtn(this);
         in>>x;
         in>>y;
+        namein>>name[i];
         Build[i]->move(x,y);
         Build[i]->setStyleSheet("color: white");
-        Build[i]->setText(QString::number(i));
         Build[i]->setObjectName(QString::number(i));
         connect(Build[i],SIGNAL(clickedOnce()),this,SLOT(push()));
         connect(Build[i],SIGNAL(clickedTwice()),this,SLOT(doubleClicked()));
@@ -30,6 +33,8 @@ MapNotes::MapNotes(QWidget *parent) :
     }
 
     connect(this,SIGNAL(setHide()),this,SLOT(chooseHiden()));
+    in.close();
+    namein.close();
 }
 void MapNotes::mousePressEvent(QMouseEvent *event){
     QPoint p_re = event->pos();
@@ -40,23 +45,21 @@ void MapNotes::mousePressEvent(QMouseEvent *event){
 void MapNotes::updateMapNotes(){
 
     re = route.getRoute(location);
-    updateText();
     update();
 }
 
 void MapNotes::clear(){
    location.clear();
-    updateMapNotes();
+   trans.clear();
+   emit updateName(trans);
+   updateMapNotes();
 }
 
-void MapNotes::updateText(){
-    string str;
-    for(unsigned long long i=0;i<location.size();i++){
-        int a = location.at(i);
-        str += to_string(a);
-        str += "->";
-    }
-    ui->yet->setText(QString::fromStdString(str));
+void MapNotes::updateText(string name){
+    if(trans.length()>0)
+        trans+="->";
+    trans+=name;
+    emit updateName(trans);
 }
 
 
@@ -114,6 +117,7 @@ MapNotes::~MapNotes()
 void MapNotes::push(){
     Mybtn* btn = qobject_cast<Mybtn*>(sender());
     int num = btn->objectName().toInt();
+    updateText(name[num]);
     switch (num) {
     case 28:
         location.push_back(15);
@@ -135,7 +139,6 @@ void MapNotes::push(){
         location.push_back(num);
         break;
     }
-    updateText();
     emit setHide();
 }
 

@@ -59,40 +59,6 @@ void Calculate::init(){
         roadCollection.push_back(tempRoad);
         hashTable.insertHash(tempRoad);
     }
-
-    ofstream rout;
-    rout.open("D:\\roadData_copy.txt");
-    for(unsigned long long i=0;i<=58;i++){
-        Road tempRoad = roadCollection.at(i);
-        rout<<tempRoad.getNumber()<<"\t";
-        rout<<tempRoad.getLength()<<"\t";
-        rout<<tempRoad.getEndPointA()<<"\t";
-        rout<<tempRoad.getEndPointB()<<"\t";
-        rout<<tempRoad.getPointNumber()<<"\t";
-        for(unsigned long long j=0;j<tempRoad.getPointNumber();j++){
-            rout<<tempRoad.getPointList().at(j).x()<<"\t";
-            rout<<tempRoad.getPointList().at(j).y()<<"\t";
-        }
-        rout<<"\n";
-    }
-
-    ofstream hout;
-    hout.open("D:\\roadData_hash.txt");
-
-    for(unsigned long long i=0;i<hashTable.getLength();i++){
-        if(hashTable.road[i].getNumber()!=-1){
-            hout<<hashTable.road[i].getNumber()<<"\t";
-            hout<<hashTable.road[i].getLength()<<"\t";
-            hout<<hashTable.road[i].getEndPointA()<<"\t";
-            hout<<hashTable.road[i].getEndPointB()<<"\t";
-            hout<<hashTable.road[i].getPointNumber()<<"\t";
-            for(unsigned long long j=0;j<hashTable.road[i].getPointNumber();j++){
-                hout<<hashTable.road[i].getPointList().at(j).x()<<"\t";
-                hout<<hashTable.road[i].getPointList().at(j).y()<<"\t";
-            }
-            hout<<"\n";
-        }
-    }
     in.close();
 }
 

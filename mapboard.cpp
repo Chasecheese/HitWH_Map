@@ -8,6 +8,7 @@ MapBoard::MapBoard(QWidget *parent) :
     ui->setupUi(this);
     mapnotes = new MapNotes;
     ui->Board->addWidget(mapnotes);
+    connect(this->mapnotes,SIGNAL(updateName(string)),this,SLOT(updateText(string)));
 }
 
 void MapBoard::updateBoard(){
@@ -22,4 +23,17 @@ void MapBoard::clear(){
 MapBoard::~MapBoard()
 {
     delete ui;
+}
+
+void MapBoard::on_clear_clicked()
+{
+    clear();
+}
+
+void MapBoard::on_route_clicked()
+{
+    updateBoard();
+}
+void MapBoard::updateText(string name){
+    this->ui->textEdit->setText(QString::fromStdString(name));
 }

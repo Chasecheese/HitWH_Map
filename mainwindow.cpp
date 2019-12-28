@@ -14,15 +14,3 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
-void MainWindow::on_Route_clicked()
-{
-    mapboard->updateBoard();
-}
-
-
-void MainWindow::on_Clear_clicked()
-{
-    mapboard->clear();
-}

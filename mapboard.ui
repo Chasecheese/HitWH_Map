@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
+    <width>1100</width>
     <height>980</height>
    </rect>
   </property>
@@ -26,22 +26,62 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../../HITWH75.jpg</pixmap>
+    <pixmap>../../../HITWH75color.jpg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget">
+  <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>901</width>
+     <width>701</width>
      <height>981</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="Board"/>
+   <layout class="QGridLayout" name="Board">
+    <property name="horizontalSpacing">
+     <number>980</number>
+    </property>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="clear">
+   <property name="geometry">
+    <rect>
+     <x>930</x>
+     <y>100</y>
+     <width>151</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>路径清除</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="route">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>100</y>
+     <width>151</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>路径规划</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>713</x>
+     <y>20</y>
+     <width>371</width>
+     <height>71</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>

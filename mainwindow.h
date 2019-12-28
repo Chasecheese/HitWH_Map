@@ -19,10 +19,6 @@ public:
 
 private slots:
 
-    void on_Route_clicked();
-
-    void on_Clear_clicked();
-
 private:
     Ui::MainWindow *ui;
     MapBoard *mapboard;

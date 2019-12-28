@@ -2,6 +2,7 @@
 #define MYBTN_H
 
 #include <QRadioButton>
+#include <QPushButton>
 #include <QTimer>
 #include <QEvent>
 class QTimer;

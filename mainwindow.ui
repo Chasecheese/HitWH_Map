@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>5</y>
-      <width>900</width>
+      <width>1100</width>
       <height>980</height>
      </rect>
     </property>
@@ -31,37 +31,11 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>898</width>
+       <width>1098</width>
        <height>978</height>
       </rect>
      </property>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="Route">
-    <property name="geometry">
-     <rect>
-      <x>920</x>
-      <y>10</y>
-      <width>131</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>路径规划</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Clear">
-    <property name="geometry">
-     <rect>
-      <x>920</x>
-      <y>70</y>
-      <width>131</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>清除路径</string>
-    </property>
    </widget>
   </widget>
  </widget>

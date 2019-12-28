@@ -33,7 +33,7 @@ public:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *event);
     ~MapNotes();
-    void updateText();
+    void updateText(string name);
     void clear();
 
     vector<Road> getRe() const;
@@ -46,15 +46,16 @@ private slots:
 
 signals:
     void setHide();
+    void updateName(string);
 private:
     Ui::MapNotes *ui;
     Route route;
     vector<int> location;
     vector<Road> re;
+    string name[33];
     Mybtn* Build[33];
     QGridLayout* controlBoard;
-    QTimer* timer;
-    int temp;
+    string trans;
 };
 
 #endif // MAPNOTES_H
