@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <hashtable.h>
-#include <queue.h>
+#include <list.h>
 
 using namespace std;
 

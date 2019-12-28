@@ -37,3 +37,13 @@ void MapBoard::on_route_clicked()
 void MapBoard::updateText(string name){
     this->ui->textEdit->setText(QString::fromStdString(name));
 }
+
+MapNotes *MapBoard::getMapnotes() const
+{
+    return mapnotes;
+}
+
+void MapBoard::setMapnotes(MapNotes *value)
+{
+    mapnotes = value;
+}

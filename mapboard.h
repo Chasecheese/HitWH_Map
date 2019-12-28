@@ -20,6 +20,9 @@ public:
     void clear();
     ~MapBoard();
 
+    MapNotes *getMapnotes() const;
+    void setMapnotes(MapNotes *value);
+
 private slots:
     void on_clear_clicked();
 

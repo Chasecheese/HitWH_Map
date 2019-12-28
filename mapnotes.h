@@ -16,6 +16,7 @@
 #include <string>
 #include <mybtn.h>
 #include <Windows.h>
+#include <list.h>
 
 using namespace std;
 
@@ -38,11 +39,13 @@ public:
 
     vector<Road> getRe() const;
     void setRe(const vector<Road> &value);
+    void print();
 
 private slots:
     void push();
     void doubleClicked();
     void chooseHiden();
+    void updateNotes(List);
 
 signals:
     void setHide();
@@ -56,6 +59,7 @@ private:
     Mybtn* Build[33];
     QGridLayout* controlBoard;
     string trans;
+    List noteNum;
 };
 
 #endif // MAPNOTES_H

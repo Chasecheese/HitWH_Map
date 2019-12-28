@@ -27,23 +27,23 @@ CONFIG += c++11
 SOURCES += \
         calculate.cpp \
         hashtable.cpp \
+        list.cpp \
         main.cpp \
         mainwindow.cpp \
         mapboard.cpp \
         mapnotes.cpp \
         mybtn.cpp \
-        queue.cpp \
         road.cpp \
         route.cpp
 
 HEADERS += \
         calculate.h \
         hashtable.h \
+        list.h \
         mainwindow.h \
         mapboard.h \
         mapnotes.h \
         mybtn.h \
-        queue.h \
         road.h \
         route.h
 

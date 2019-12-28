@@ -27,7 +27,7 @@ MapNotes::MapNotes(QWidget *parent) :
         connect(Build[i],SIGNAL(clickedOnce()),this,SLOT(push()));
         connect(Build[i],SIGNAL(clickedTwice()),this,SLOT(doubleClicked()));
         Build[i]->setStyleSheet("QRadioButton::indicator {width:15px;height:15px;border-radius:7px}"
-                                            "QRadioButton::indicator:checked {background-color:red;}"
+                                            "QRadioButton::indicator:checked {background-color:yellow;}"
                                             "QRadioButton::indicator:unchecked {background-color:white;}"
                                             );
     }
@@ -44,6 +44,7 @@ void MapNotes::mousePressEvent(QMouseEvent *event){
 }
 void MapNotes::updateMapNotes(){
 
+    noteNum.setLength(0);
     re = route.getRoute(location);
     update();
 }
@@ -78,12 +79,11 @@ void MapNotes::paintEvent(QPaintEvent *){
     pen.setColor(squreColor.light());
     painter.setPen(pen);
     painter.setBrush(squreColor);
-
     //按照坐标绘制路线
     QPoint* C;
     for(unsigned long long i=0;i<re.size();i++){
         if(re.at(i).getPointNumber()==static_cast<unsigned long long>(-1)){
-            QColor squreColor = colorTable[j++%6];//绘制bubble
+            squreColor = colorTable[j++%6];
             pen.setColor(squreColor.light());
             painter.setPen(pen);
             painter.setBrush(squreColor);
@@ -95,6 +95,16 @@ void MapNotes::paintEvent(QPaintEvent *){
             }
             painter.drawPolyline(C,static_cast<int>(re.at(i).getPointNumber()));
         }
+    }
+
+    squreColor = colorTable[1];
+    pen.setColor(squreColor.light());
+    painter.setPen(pen);
+    painter.setBrush(squreColor);
+    for(int i= 1;i<=noteNum.ListLength();i++){
+        int temp;
+        noteNum.GetElem(i,temp);
+        painter.drawRect(Build[temp]->x(),Build[temp]->y(),20,20);
     }
 }
 
@@ -153,5 +163,10 @@ void MapNotes::doubleClicked(){
 
 void MapNotes::chooseHiden(){
     this->ui->HidenButton->setChecked(true);
+}
+
+void MapNotes::updateNotes(List list){
+    noteNum = list;
+    update();
 }
 

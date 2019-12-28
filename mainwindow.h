@@ -5,6 +5,8 @@
 #include <mapboard.h>
 #include <iostream>
 #include <QPaintEvent>
+#include <list.h>
+
 namespace Ui {
 class MainWindow;
 }
@@ -19,6 +21,10 @@ public:
 
 private slots:
 
+    void on_pushButton_clicked();
+
+signals:
+    void notes(List);
 private:
     Ui::MainWindow *ui;
     MapBoard *mapboard;
