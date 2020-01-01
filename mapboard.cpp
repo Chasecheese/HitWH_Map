@@ -25,17 +25,8 @@ MapBoard::~MapBoard()
     delete ui;
 }
 
-void MapBoard::on_clear_clicked()
-{
-    clear();
-}
-
-void MapBoard::on_route_clicked()
-{
-    updateBoard();
-}
 void MapBoard::updateText(string name){
-    this->ui->textEdit->setText(QString::fromStdString(name));
+    emit sendname(name);
 }
 
 MapNotes *MapBoard::getMapnotes() const

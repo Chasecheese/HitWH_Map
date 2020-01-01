@@ -20,8 +20,11 @@ public:
     ~MainWindow();
 
 private slots:
+    void showRoute(string);
 
-    void on_pushButton_clicked();
+    void on_Route_clicked();
+
+    void on_Clear_clicked();
 
 signals:
     void notes(List);

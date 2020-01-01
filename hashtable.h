@@ -12,6 +12,7 @@ public:
     void InitHashTable();
 
     unsigned long long Hash(int x,int y);
+    unsigned long long HashUnique(int x, int y);
 
     void insertHash(Road);
 

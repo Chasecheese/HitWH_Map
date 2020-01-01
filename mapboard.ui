@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
+    <width>701</width>
     <height>980</height>
    </rect>
   </property>
@@ -46,42 +46,6 @@
      <number>980</number>
     </property>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="clear">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>100</y>
-     <width>151</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>路径清除</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="route">
-   <property name="geometry">
-    <rect>
-     <x>710</x>
-     <y>100</y>
-     <width>151</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>路径规划</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit">
-   <property name="geometry">
-    <rect>
-     <x>713</x>
-     <y>20</y>
-     <width>371</width>
-     <height>71</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources/>

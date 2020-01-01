@@ -18,8 +18,18 @@ unsigned long long HashTable::Hash(int x,int y){
 
 }
 
+unsigned long long HashTable::HashUnique(int x, int y){
+    if(x<y){
+        int temp = x;
+        x = y;
+        y=temp;
+    }
+    unsigned long long result = static_cast<unsigned long long>((x*(x+1))/2+y);
+    return result%length;
+}
+
 void HashTable::insertHash(Road r){
-    unsigned long long addr = Hash(r.getEndPointA(),r.getEndPointB());
+    unsigned long long addr = HashUnique(r.getEndPointA(),r.getEndPointB());
     while(static_cast<int>(road[addr].getPointNumber())!=-1){
         addr = (addr+1)%(this->length);
     }
@@ -46,7 +56,7 @@ void HashTable::setLength(unsigned long long value)
 
 
 unsigned long long HashTable::searchHash(int x,int y){
-    unsigned long long addr = Hash(x,y);
+    unsigned long long addr = HashUnique(x,y);
     while(!equal(x,y,road[addr])){
         addr = (addr+1)%(this->length);
     }

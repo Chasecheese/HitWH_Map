@@ -24,11 +24,10 @@ public:
     void setMapnotes(MapNotes *value);
 
 private slots:
-    void on_clear_clicked();
-
-    void on_route_clicked();
 
     void updateText(string);
+signals:
+    void sendname(string); //发送edittext的内容
 private:
     Ui::MapBoard *ui;
     MapNotes* mapnotes;
